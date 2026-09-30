@@ -1,0 +1,146 @@
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #FCF2BB; 
+}
+
+/* Navbar */
+
+.navbar img {
+    width: 7rem;
+    height: 7rem;
+    border-radius: 15%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 7%;
+    background-color: rgba(252, 242, 187, 0.6);
+    border-bottom: 2px solid #FAE18F;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999999;
+}
+
+.navbar .judul {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 2rem;
+    color: #9C7907;
+    margin-left: 28rem;
+}
+
+.navbar .judul span {
+    color: #705705;
+}
+
+.navbar .nav a {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    color: #9C7907;
+    display: inline-block;
+    font-size: 1.3rem;
+    margin: 0.5rem;
+}
+
+.navbar .nav a:hover {
+    color: #705705;
+}
+
+.navbar .nav a::after {
+    content: '';
+    display: block;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.1rem solid #705705;
+    transform: scaleX(0);
+    transition: 0.4s linear;
+}
+
+.navbar .nav a:hover::after {
+    transform: scaleX(0.5);
+}
+
+.navbar .icon {
+    display: none;
+}
+
+/* Media Queries */
+
+/* Laptop */
+@media (max-width: 1366px) {
+    html {
+        font-size: 75%;
+    }
+}
+/* Tablet */
+@media (max-width: 768px) {
+    html {
+        font-size: 62.5%;
+    }
+
+    .navbar .judul {
+        margin-left: 0;
+    }
+
+    .navbar .icon {
+        display: inline-block;
+        color: #9C7907;
+    }
+
+    .navbar .nav {
+        position: absolute;
+        top: 100%;
+        right: -100%;
+        background-color: #FAE18F;
+        width: 30rem;
+        height: 100vh;
+        transition: 0.5s;
+    }
+
+    .navbar .nav.active {
+        right: 0;
+    }
+
+    .navbar .nav a {
+        color: #9C7907;
+        display: block;
+        margin: 1.5rem;
+        padding: 0.5rem;
+        font-size: 2rem;
+    }
+
+    .navbar .nav a::after {
+        transform-origin: 0 0;
+    }
+
+    .navbar .nav a:hover::after {
+        transform: scaleX(0.3)
+    }
+}
+
+/* Mobile */
+@media (max-width: 450px) {
+    html {
+        font-size: 55%;
+    }
+}
