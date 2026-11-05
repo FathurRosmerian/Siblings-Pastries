@@ -1,9 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <!-- Viewport Responsif untuk Android & iOS Notch -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <title>Siblings Pastries - Freshly Baked Daily</title>
+
+    <!-- Warna status bar di browser Android & iOS -->
+    <meta name="theme-color" content="#FCF2BB">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
     <link rel="stylesheet" href="Styles/style.css">
     <script src="https://unpkg.com/feather-icons"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,33 +19,323 @@
 </head>
 <body>
     
+    <!-- Top Announcement Bar -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <span class="announcement">✨ Bakes Fresh Every Day • Handcrafted with Love</span>
+            <div class="top-bar-info">
+                <span><i data-feather="clock"></i> 08:00 - 18:00 WIB</span>
+                <span><i data-feather="map-pin"></i> Siblings Pastries</span>
+                <div class="top-socials">
+                    <a href="https://www.instagram.com/siblings_pastries/" aria-label="Instagram"><i data-feather="instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Navbar Start -->
-
     <nav class="navbar">
-
-        <a href="#"><img src="Img/Logo.jpg" alt=""></a>
-        <a href="#" class="judul">Siblings <span>Pastries</span></a>
+        <div class="navbar-brand">
+            <a href="#" class="logo-link">
+                <img src="Img/Logo.jpg" onerror="this.src='https://images.unsplash.com/photo-1509440159596-0249088772ff?w=100&q=80'" alt="Siblings Pastries Logo">
+            </a>
+            <a href="#" class="judul">Siblings <span>Pastries</span></a>
+        </div>
 
         <div class="nav">
-            <a href="#">About Us</a>
-            <a href="">Catalogue</a>
-            <a href="">Price List</a>
-            <a href="">Contact</a>
+            <a href="#home">Home</a>
+            <a href="#catalogue">Catalogue</a>
+            <a href="#about">About Us</a>
+            <a href="#visit">Visit Us</a>
+            <a href="#contact">Contact</a>
+            <a href="#pricelist">PriceList</a>
         </div>
 
-        <div class="icon">
-            <a href="#" id="menu"><i data-feather="menu"></i></a>
+        <div class="navbar-actions">
+            <a href="https://whatsform.com/q2LL2g" class="btn-pill btn-nav">Order Now</a>
+            <div class="icon">
+                <a href="javascript:void(0)" id="menu" aria-label="Buka Menu"><i data-feather="menu"></i></a>
+            </div>
         </div>
     </nav>
-
     <!-- Navbar End -->
 
-    <!-- Icon -->
+    <!-- Hero Section Start -->
+    <section class="hero" id="home">
+        <!-- Dekorasi Latar Belakang Melayang -->
+        <div class="hero-bg-decor decor-1">
+            <img src="/Img/Cheese_Cake_2.jpeg" alt="Fresh Croissants">
+        </div>
+        <div class="hero-bg-decor decor-2">
+            <img src="/Img/paper1.jpeg" alt="Artisan Bread">
+        </div>
+        <div class="hero-bg-decor decor-3">
+            <img src="/Img/Custom1.jpeg" alt="Sweet Pastry">
+        </div>
+
+        <!-- Hero Card Utama -->
+        <div class="hero-card">
+            <span class="hero-badge">💛 Made By Love, From Hearts and with Smile</span>
+            <h1 class="hero-title">Freshly Baked,<br>Just for You!</h1>
+            <p class="hero-subtitle">"Cari yang manis dan bikin ketagihan? Cobain Cheesecake lumer, Red Velvet ikonik, Cream Cake super lembut, dan Chocolate cake kaya rasa. Fresh from the oven setiap hari pesan milikmu sekarang sebelum kehabisan!"</p>
+
+            <!-- Card Video (Di dalam Hero Card) -->
+            <div class="hero-video-box">
+                <div class="video-frame">
+                    <video autoplay muted loop playsinline webkit-playsinline controls poster="/Img/Teaser.mp4">
+                        <source src="/Img/Teaser.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">
+                    <i data-feather="play-circle"></i>
+                </div>
+            </div>
+
+            <a href="#catalogue" class="btn-pill btn-hero">Order Now</a>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
+    <!-- Why Choose Us Section Start -->
+    <section class="features" id="about">
+        <div class="section-header">
+            <div class="feature-icon-badge">
+                <i data-feather="coffee"></i>
+            </div>
+            <h2 class="section-title">Kenapa Memilih Kami?</h2>
+            <p class="section-desc">"Rasakan kehangatan kue buatan rumah dengan standar kelezatan kelas atas. Perpaduan sempurna antara rasa otentik yang familiar dan kualitas rasa yang mewah serta mahal."</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="card-img-wrap">
+                    <img src="/Img/Cheese_Cake_2.jpeg" alt="CheeseCake">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Cheesecake</h3>
+                    <p class="card-text">"Lumer, gurih, dan super creamy—setiap sendoknya menghadirkan kelembutan keju asli yang meleleh sempurna di mulut."</p>
+                    <a href="#catalogue" class="btn-pill btn-card">View Menu</a>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="card-img-wrap">
+                    <img src="/Img/Red_Velvet.jpeg" alt="Red_Velvet">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Red Velvet</h3>
+                    <p class="card-text">"Sentuhan merah elegan dengan perpaduan rasa cokelat tipis, kelembutan khas, dan cream cheese gurih yang bikin jatuh cinta pada gigitan pertama."</p>
+                    <a href="#catalogue" class="btn-pill btn-card">View Menu</a>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="card-img-wrap">
+                    <img src="/Img/Chocolate.jpeg" alt="Chocolate">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Chocolate Cake</h3>
+                    <p class="card-text">"Kemewahan cokelat kaya rasa yang pekat dan intens—manisnya pas, rasa cokelatnya mantap, cocok untuk memanjakan penikmat cokelat sejati."</p>
+                    <a href="#catalogue" class="btn-pill btn-card">View Menu</a>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="card-img-wrap">
+                    <img src="/Img/Cream_Fruit_Cake.jpeg" alt="Cream_Cake">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Cream Cake</h3>
+                    <p class="card-text">"Ringan, lembut bagai awan, dengan lapisan krim segar yang pas di lidah—memberikan sensasi manis yang lembut dan tak terlupakan."</p>
+                    <a href="#catalogue" class="btn-pill btn-card">View Menu</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Why Choose Us Section End -->
+
+    <!-- Visit Us Section Start -->
+    <section class="visit" id="visit">
+        <div class="visit-container">
+            <div class="visit-content">
+                <span class="hero-badge">OUR BAKERY</span>
+                <h2 class="section-title">Our Location</h2>
+                <div class="visit-info-list">
+                    <div class="info-item">
+                        <i data-feather="clock"></i>
+                        <div>
+                            <strong>Jam Operasional:</strong>
+                            <p>Senin - Minggu: 08.00 - 18.00 WIB</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i data-feather="map-pin"></i>
+                        <div>
+                            <strong>Alamat Gerai:</strong>
+                            <p>Villa Pabuaran Indah JL. Pradana XII No.20 RT 13/16 Bojonggede, Bogor</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i data-feather="phone"></i>
+                        <div>
+                            <strong>Reservasi & WhatsApp:</strong>
+                            <p>+62 813-1917-0680</p>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="https://maps.app.goo.gl/YdVNdZnd7rbTte658" class="btn-pill btn-hero">Visit Us Today</a>
+            </div>
+
+            <div class="visit-gallery">
+                <div class="gallery-col">
+                    <img class="img-tall" src="/Img/paper1.jpeg" alt="Delicious Donuts">
+                    <img class="img-short" src="/Img/korean7.jpeg" alt="Fruit Tarts">
+                </div>
+                <div class="gallery-col">
+                    <img class="img-full" src="Img/Custom1.jpeg" alt="Powdered Baked Tart">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Visit Us Section End -->
+
+    <!-- Price List Section Start -->
+    <section class="pricelist" id="pricelist">
+        <div class="section-header">
+            <div class="feature-icon-badge">
+                <i data-feather="tag"></i>
+            </div>
+            <h2 class="section-title">Price List</h2>
+            <p class="section-desc">Daftar harga lengkap aneka kreasi fresh bakery kami. Geser untuk melihat menu varian artisan bread, sweet pastries, dan custom cakes.</p>
+        </div>
+        <!-- Satu Card Tunggal Price List -->
+        <div class="pricelist-card">
+            <!-- Slider Container -->
+            <div class="slider-container" id="priceSlider">
+                <!-- Track Gambar Slider -->
+                <div class="slider-track" id="sliderTrack">
+                    <!-- Slide 1 (Format Potret) -->
+                    <div class="slide">
+                        <div class="slide-img-wrap">
+                            <img src="/Img/CheeseCake.png" alt="Price List Artisan Breads">
+                            <span class="slide-badge">CheeseCake</span>
+                        </div>
+                    </div>
+                    <!-- Slide 2 (Format Potret) -->
+                    <div class="slide">
+                        <div class="slide-img-wrap">
+                            <img src="Img/Chocolate.png" alt="Price List Sweet Pastries">
+                            <span class="slide-badge">Chocolate</span>
+                        </div>
+                    </div>
+                    <!-- Slide 3 (Format Potret) -->
+                    <div class="slide">
+                        <div class="slide-img-wrap">
+                            <img src="/Img/Cream_Cake.png" alt="Price List Custom Cakes">
+                            <span class="slide-badge">Cream Cake</span>
+                        </div>
+                    </div>
+                    <!-- Slide 4 (Format Potret) -->
+                    <div class="slide">
+                        <div class="slide-img-wrap">
+                            <img src="/Img/Custom_Cake.png" alt="Price List Donuts & Dessert">
+                            <span class="slide-badge">Custom Cake</span>
+                        </div>
+                    </div>
+                    <!-- Slide 5 (Format Potret) -->
+                    <div class="slide">
+                        <div class="slide-img-wrap">
+                            <img src="/Img/Korean_Cake.png" alt="Price List Donuts & Dessert">
+                            <span class="slide-badge">Korean Cake</span>
+                        </div>
+                    </div>
+                    <!-- Slide 6 (Format Potret) -->
+                    <div class="slide">
+                        <div class="slide-img-wrap">
+                            <img src="/Img/Paper_Topper.png" alt="Price List Donuts & Dessert">
+                            <span class="slide-badge">Paper Topper</span>
+                        </div>
+                    </div>
+                    <!-- Slide 7 (Format Potret) -->
+                    <div class="slide">
+                        <div class="slide-img-wrap">
+                            <img src="/Img/Red_Velvet.png" alt="Price List Donuts & Dessert">
+                            <span class="slide-badge">Red Velvet</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tombol Navigasi Kiri & Kanan -->
+                <button class="slider-btn prev-btn" id="prevSlide" aria-label="Slide Sebelumnya">
+                    <i data-feather="chevron-left"></i>
+                </button>
+                <button class="slider-btn next-btn" id="nextSlide" aria-label="Slide Berikutnya">
+                    <i data-feather="chevron-right"></i>
+                </button>
+            </div>
+            <!-- Titik Indikator Slider (Dots) -->
+            <div class="slider-dots" id="sliderDots"></div>
+            <!-- Footer di Dalam Card Price List -->
+            <div class="pricelist-card-footer">
+                <a href="https://whatsform.com/q2LL2g" target="_blank" class="btn-pill btn-hero">
+                    Pesan Sekarang
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- Price List Section End -->
+
+    <!-- Footer Start -->
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-col brand">
+                <a href="#" class="judul">Siblings <span>Pastries</span></a>
+                <p>Menghadirkan kehangatan dan kelezatan panggangan segar langsung kepada Anda setiap hari.</p>
+                <div class="footer-socials">
+                    <!-- Hanya menyisakan Instagram -->
+                    <a href="https://www.instagram.com/siblings_pastries/" aria-label="Instagram"><i data-feather="instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="#home">Home</a>
+                <a href="#about">About Us</a>
+                <a href="#catalogue">Catalogue</a>
+                <a href="#visit">Visit Us</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Opening Hours</h4>
+                <p>Senin - Jumat: 08:00 - 18:00</p>
+                <p>Sabtu - Minggu: 08:00 - 18:00</p>
+                <p>Bakes fresh every morning!</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <p><i data-feather="phone"></i> +62 813-1917-0680</p>
+                <p><i data-feather="map-pin"></i> Villa Pabuaran Indah JL. Pradana XII No.20 RT 13/16 Bojonggede, Bogor</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Siblings Pastries. All Rights Reserved. Crafted with passion.</p>
+        </div>
+    </footer>
+    <!-- Footer End -->
+
+    <!-- Tombol Back to Top -->
+    <a href="javascript:void(0)" class="btn-back-to-top" id="backToTop" aria-label="Kembali ke atas">
+        <i data-feather="arrow-up"></i>
+    </a>
+
+    <!-- Feather Icons Script -->
     <script>
       feather.replace();
     </script>
 
-    <!-- Js -->
-     <script src="Script/script.js" defer></script>
+    <!-- JavaScript File -->
+    <script src="Script/script.js" defer></script>
 </body>
 </html>

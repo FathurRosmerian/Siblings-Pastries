@@ -1,5 +1,11 @@
+/* =========================================
+   Reset Dasar & Pengaturan Cross-Platform
+   ========================================= */
 html {
     scroll-behavior: smooth;
+    /* Mencegah iOS Safari & Android Chrome mengubah ukuran teks secara sepihak */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 * {
@@ -9,44 +15,136 @@ html {
     outline: none;
     border: none;
     text-decoration: none;
+    /* Mencegah kilatan highlight biru/abu-abu saat tombol ditekan di HP */
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
-    font-family: "Poppins", sans-serif;
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-weight: 400;
     font-style: normal;
     background-color: #FCF2BB; 
+    color: #705705;
+    line-height: 1.6;
+    overflow-x: hidden;
+    width: 100%;
+    /* Mendukung Safe Area Notch & Bar Bawah iPhone */
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
 }
 
-/* Navbar */
-
-.navbar img {
-    width: 7rem;
-    height: 7rem;
-    border-radius: 15%;
+img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.4rem 7%;
-    background-color: rgba(252, 242, 187, 0.6);
-    border-bottom: 2px solid #FAE18F;
+/* =========================================
+   Top Announcement Bar
+   ========================================= */
+.top-bar {
+    background-color: #FCF2BB;
+    border-bottom: 1px solid #FAE18F;
+    font-size: 0.85rem;
+    color: #9C7907;
+    padding: 0.5rem 7%;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
+    z-index: 10000000;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.top-bar.hide {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+.top-bar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.top-bar-info {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.top-bar-info span {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.top-bar-info svg {
+    width: 1rem;
+    height: 1rem;
+}
+
+.top-socials {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.top-socials a {
+    color: #9C7907;
+    transition: 0.2s;
+}
+
+.top-socials a:hover {
+    color: #705705;
+}
+
+/* =========================================
+   Navbar
+   ========================================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 7%;
+    background-color: rgba(252, 242, 187, 0.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Dukungan Safari iOS */
+    border-bottom: 2px solid #FAE18F;
+    position: fixed;
+    top: 2.3rem;
+    left: 0;
+    right: 0;
     z-index: 9999999;
+    transition: transform 0.4s ease, top 0.4s ease;
+}
+
+.navbar.hide {
+    transform: translateY(-160%);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navbar img {
+    width: 3.6rem;
+    height: 3.6rem;
+    border-radius: 15%;
+    object-fit: cover;
+    border: 2px solid #FAE18F;
 }
 
 .navbar .judul {
     font-family: "Poppins", sans-serif;
     font-weight: 700;
     font-style: italic;
-    font-size: 2rem;
+    font-size: 1.7rem;
     color: #9C7907;
-    margin-left: 28rem;
 }
 
 .navbar .judul span {
@@ -59,8 +157,10 @@ body {
     font-style: normal;
     color: #9C7907;
     display: inline-block;
-    font-size: 1.3rem;
-    margin: 0.5rem;
+    font-size: 1.05rem;
+    margin: 0 0.8rem;
+    position: relative;
+    transition: color 0.3s ease;
 }
 
 .navbar .nav a:hover {
@@ -70,51 +170,774 @@ body {
 .navbar .nav a::after {
     content: '';
     display: block;
-    padding-bottom: 0.5rem;
-    border-bottom: 0.1rem solid #705705;
+    padding-bottom: 0.3rem;
+    border-bottom: 0.15rem solid #705705;
     transform: scaleX(0);
-    transition: 0.4s linear;
+    transition: 0.3s ease-in-out;
 }
 
 .navbar .nav a:hover::after {
-    transform: scaleX(0.5);
+    transform: scaleX(0.7);
+}
+
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
 }
 
 .navbar .icon {
     display: none;
 }
 
-/* Media Queries */
+/* =========================================
+   Pill Buttons
+   ========================================= */
+.btn-pill {
+    display: inline-block;
+    background-color: #705705;
+    color: #FCF2BB;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.65rem 1.8rem;
+    border-radius: 9999px;
+    box-shadow: 0 4px 12px rgba(112, 87, 5, 0.2);
+    transition: all 0.3s ease;
+    text-align: center;
+    cursor: pointer;
+    touch-action: manipulation;
+}
 
-/* Laptop */
-@media (max-width: 1366px) {
-    html {
-        font-size: 75%;
+.btn-pill:hover, .btn-pill:active {
+    background-color: #9C7907;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(112, 87, 5, 0.3);
+}
+
+.btn-nav {
+    padding: 0.55rem 1.4rem;
+    font-size: 0.9rem;
+}
+
+.btn-hero {
+    padding: 0.85rem 2.5rem;
+    font-size: 1.1rem;
+}
+
+.btn-card {
+    padding: 0.6rem 1.6rem;
+    font-size: 0.9rem;
+    margin-top: 0.8rem;
+}
+
+/* =========================================
+   Hero Section
+   ========================================= */
+.hero {
+    min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height untuk iOS & Android */
+    padding: 10rem 7% 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Gambar Bakery Mengambang di Hero */
+.hero-bg-decor {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    filter: drop-shadow(0 15px 30px rgba(112, 87, 5, 0.15));
+}
+
+.hero-bg-decor img {
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #FAE18F;
+}
+
+.hero-bg-decor.decor-1 {
+    top: 15%;
+    left: 4%;
+    width: 13rem;
+    height: 13rem;
+    transform: rotate(-12deg);
+}
+
+.hero-bg-decor.decor-2 {
+    top: 18%;
+    right: 5%;
+    width: 14rem;
+    height: 14rem;
+    transform: rotate(15deg);
+}
+
+.hero-bg-decor.decor-3 {
+    bottom: 5%;
+    right: 12%;
+    width: 10rem;
+    height: 10rem;
+    transform: rotate(-8deg);
+}
+
+/* Hero Center Card */
+.hero-card {
+    position: relative;
+    z-index: 2;
+    background-color: rgba(255, 253, 240, 0.95);
+    border: 2px solid #FAE18F;
+    border-radius: 2rem;
+    padding: 3.5rem 3rem;
+    max-width: 48rem;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 16px 40px rgba(156, 121, 7, 0.12);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.hero-badge {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #9C7907;
+    margin-bottom: 0.8rem;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #705705;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: 1.05rem;
+    color: #9C7907;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+/* Card Video di dalam Hero Card */
+.hero-video-box {
+    margin: 1.8rem auto 2.2rem;
+    background-color: #FCF2BB;
+    border: 2px solid #FAE18F;
+    border-radius: 1.8rem;
+    padding: 0.8rem;
+    box-shadow: 0 10px 28px rgba(112, 87, 5, 0.12);
+    /* Dibatasi lebarnya agar tinggi potret tetap proporsional */
+    max-width: 21rem; 
+    width: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hero-video-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 34px rgba(112, 87, 5, 0.16);
+}
+
+.video-frame {
+    position: relative;
+    width: 100%;
+    /* Rasio potret standar video vertikal HP / Reels / TikTok */
+    aspect-ratio: 9 / 16;
+    border-radius: 1.2rem;
+    overflow: hidden;
+    background-color: #705705;
+    box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.2);
+}
+.video-frame video,
+.video-frame iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Video mengisi penuh bingkai potret */
+    border: none;
+    border-radius: 1.2rem;
+}
+/* Keterangan di Bawah Video */
+.video-caption {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #705705;
+    margin-top: 0.7rem;
+    padding: 0 0.5rem;
+    text-align: center;
+}
+.video-caption svg {
+    width: 1.1rem;
+    height: 1.1rem;
+    color: #9C7907;
+    flex-shrink: 0;
+}
+
+/* =========================================
+   Why Choose Us Section
+   ========================================= */
+.features {
+    padding: 5rem 7%;
+}
+
+.section-header {
+    text-align: center;
+    max-width: 42rem;
+    margin: 0 auto 3.5rem;
+}
+
+.feature-icon-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: #FAE18F;
+    border-radius: 50%;
+    color: #705705;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: #705705;
+    margin-bottom: 0.8rem;
+}
+
+.section-desc {
+    font-size: 1rem;
+    color: #9C7907;
+    line-height: 1.6;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.2rem;
+}
+
+.feature-card {
+    background-color: #FFFDF0;
+    border: 2px solid #FAE18F;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(112, 87, 5, 0.08);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 35px rgba(112, 87, 5, 0.15);
+}
+
+.card-img-wrap {
+    width: 100%;
+    height: 35rem;
+    overflow: hidden;
+}
+
+.card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.feature-card:hover .card-img-wrap img {
+    transform: scale(1.05);
+}
+
+.card-body {
+    padding: 1.8rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.card-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #705705;
+    margin-bottom: 0.6rem;
+}
+
+.card-text {
+    font-size: 0.95rem;
+    color: #9C7907;
+    margin-bottom: 1.4rem;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+/* =========================================
+   Visit Us Section
+   ========================================= */
+.visit {
+    padding: 5rem 7%;
+}
+
+.visit-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    align-items: center;
+    background-color: rgba(255, 253, 240, 0.9);
+    border: 2px solid #FAE18F;
+    border-radius: 2rem;
+    padding: 3.5rem;
+    box-shadow: 0 16px 40px rgba(112, 87, 5, 0.08);
+}
+
+.visit-desc {
+    font-size: 1.05rem;
+    color: #9C7907;
+    margin-bottom: 2rem;
+}
+
+.visit-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-bottom: 2.2rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+}
+
+.info-item svg {
+    color: #705705;
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+}
+
+.info-item strong {
+    display: block;
+    color: #705705;
+    font-size: 1rem;
+}
+
+.info-item p {
+    color: #9C7907;
+    font-size: 0.95rem;
+}
+
+.visit-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+}
+
+.gallery-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.gallery-col img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 1.2rem;
+    border: 2px solid #FAE18F;
+}
+
+.img-tall { height: 28rem; }
+.img-short { height: 26rem; }
+.img-full { height: 45rem; }
+
+/* =========================================
+   Price List Section & Portrait Slider Card
+   ========================================= */
+.pricelist {
+    padding: 5rem 7%;
+}
+/* Card Tunggal Price List */
+.pricelist-card {
+    background-color: #FFFDF0;
+    border: 2px solid #FAE18F;
+    border-radius: 2.2rem;
+    padding: 3.5rem 2rem 2.8rem;
+    max-width: 32rem; /* Lebar card yang elegan dan pas */
+    margin: 0 auto;
+    box-shadow: 0 16px 45px rgba(112, 87, 5, 0.12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* Kontainer Slider */
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 22rem; /* Lebar potret */
+    border-radius: 1.6rem;
+    overflow: hidden;
+    border: 2px solid #FAE18F;
+    box-shadow: 0 12px 30px rgba(112, 87, 5, 0.15);
+    background-color: #705705;
+}
+/* Track Animasi Geser */
+.slider-track {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    width: 100%;
+}
+/* Slide Masing-Masing */
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+.slide-img-wrap {
+    position: relative;
+    width: 100%;
+    /* Rasio potret vertikal (bisa untuk menu flyer / daftar harga) */
+    aspect-ratio: 9 / 14; 
+    overflow: hidden;
+}
+.slide-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+/* Badge Label di Pojok Atas Gambar */
+.slide-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: rgba(112, 87, 5, 0.88);
+    color: #FCF2BB;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.4rem 1rem;
+    border-radius: 9999px;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(4px);
+    border: 1px solid #FAE18F;
+}
+/* Tombol Navigasi Panah (Prev/Next) */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(252, 242, 187, 0.9);
+    color: #705705;
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    border: 2px solid #FAE18F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+.slider-btn:hover {
+    background-color: #705705;
+    color: #FCF2BB;
+    transform: translateY(-50%) scale(1.08);
+}
+.slider-btn svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    stroke-width: 2.5;
+}
+.prev-btn { left: 0.8rem; }
+.next-btn { right: 0.8rem; }
+/* Indikator Titik (Dots) */
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 1.6rem 0 1.4rem;
+}
+.slider-dots .dot {
+    width: 0.7rem;
+    height: 0.7rem;
+    background-color: #FAE18F;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.35s ease;
+}
+.slider-dots .dot.active {
+    background-color: #705705;
+    width: 2rem; /* Memanjang menjadi bentuk pill aktif */
+    border-radius: 9999px;
+}
+/* Footer Card */
+.pricelist-card-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    width: 100%;
+}
+.pricelist-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    color: #9C7907;
+    text-align: center;
+    line-height: 1.4;
+}
+.pricelist-note svg {
+    width: 1.1rem;
+    height: 1.1rem;
+    flex-shrink: 0;
+}
+
+/* =========================================
+   Footer
+   ========================================= */
+.footer {
+    background-color: #FAE18F;
+    border-top: 2px solid #9C7907;
+    padding: 4rem 7% 2rem;
+    margin-top: 3rem;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr 1.5fr;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.footer-col.brand .judul {
+    font-size: 1.7rem;
+    font-weight: 700;
+    font-style: italic;
+    color: #9C7907;
+    display: inline-block;
+    margin-bottom: 0.8rem;
+}
+
+.footer-col.brand .judul span {
+    color: #705705;
+}
+
+.footer-col.brand p {
+    color: #705705;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    max-width: 20rem;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    background-color: #FCF2BB;
+    color: #705705;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.footer-socials a:hover {
+    background-color: #705705;
+    color: #FCF2BB;
+    transform: translateY(-3px);
+}
+
+.footer-col h4 {
+    font-size: 1.15rem;
+    color: #705705;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.footer-col a, .footer-col p {
+    display: block;
+    color: #705705;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-col a:hover {
+    color: #9C7907;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(156, 121, 7, 0.3);
+    padding-top: 1.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #705705;
+}
+
+/* =========================================
+   Tombol Back to Top (Floating)
+   ========================================= */
+.btn-back-to-top {
+    position: fixed;
+    bottom: calc(2.5rem + env(safe-area-inset-bottom));
+    right: calc(2.5rem + env(safe-area-inset-right));
+    width: 3.4rem;
+    height: 3.4rem;
+    background-color: #705705;
+    color: #FCF2BB;
+    border: 2px solid #FAE18F;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(112, 87, 5, 0.25);
+    cursor: pointer;
+    z-index: 9999999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.35s ease;
+}
+
+.btn-back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.btn-back-to-top:hover, .btn-back-to-top:active {
+    background-color: #9C7907;
+    color: #ffffff;
+    transform: translateY(-4px);
+}
+
+.btn-back-to-top svg {
+    width: 1.7rem;
+    height: 1.7rem;
+}
+
+/* ==========================================================================
+   MEDIA QUERIES (LAPTOP, IPAD/TABLET, SMARTPHONE ANDROID & IOS)
+   ========================================================================== */
+
+/* 1. Laptop & Layar Menengah (max-width: 1200px) */
+@media (max-width: 1200px) {
+    .navbar .nav a {
+        font-size: 0.95rem;
+        margin: 0 0.5rem;
+    }
+
+    .hero-card {
+        max-width: 44rem;
+    }
+
+    .hero-bg-decor.decor-1 { width: 10rem; height: 10rem; }
+    .hero-bg-decor.decor-2 { width: 11rem; height: 11rem; }
+    .hero-bg-decor.decor-3 { width: 8rem; height: 8rem; }
+}
+
+/* 2. iPad Pro, iPad Air & Tablet Landscape / Portrait (max-width: 992px) */
+@media (max-width: 992px) {
+    .pricelist-card {
+        padding: 2.5rem 1.2rem 2rem;
+        border-radius: 1.6rem;
+    }
+    .slider-container {
+        max-width: 18rem;
+    }
+    .slider-btn {
+        width: 2.4rem;
+        height: 2.4rem;
+    }
+    .slider-btn svg {
+        width: 1.2rem;
+        height: 1.2rem;
+    }
+
+    .visit-container {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding: 3rem 2.5rem;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
     }
 }
-/* Tablet */
+
+/* 3. iPad Mini, Tablet Portrait & Ponsel Layar Lebar (max-width: 768px) */
 @media (max-width: 768px) {
-    html {
-        font-size: 62.5%;
+    /* Sembunyikan top announcement bar di HP & Tablet agar hemat ruang vertikal */
+    .top-bar {
+        display: none !important;
+    }
+
+    .navbar {
+        top: 0;
+        padding: 0.9rem 6%;
+    }
+
+    .navbar img {
+        width: 3rem;
+        height: 3rem;
     }
 
     .navbar .judul {
-        margin-left: 0;
+        font-size: 1.5rem;
+    }
+
+    .btn-nav {
+        display: none; /* Tombol CTA di navbar disembunyikan di HP */
     }
 
     .navbar .icon {
         display: inline-block;
         color: #9C7907;
+        cursor: pointer;
     }
 
+    .navbar .icon svg {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    /* Sidebar Menu Mobile (Slide dari kanan) */
     .navbar .nav {
-        position: absolute;
-        top: 100%;
+        position: fixed;
+        top: 0;
         right: -100%;
         background-color: #FAE18F;
-        width: 30rem;
+        width: min(20rem, 80vw);
         height: 100vh;
-        transition: 0.5s;
+        height: 100dvh; /* Dynamic Height untuk Safari iOS */
+        padding-top: calc(5rem + env(safe-area-inset-top));
+        padding-left: 2rem;
+        padding-right: 2rem;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.12);
+        transition: right 0.4s ease-in-out;
+        z-index: -1;
+        -webkit-overflow-scrolling: touch;
     }
 
     .navbar .nav.active {
@@ -124,23 +947,119 @@ body {
     .navbar .nav a {
         color: #9C7907;
         display: block;
-        margin: 1.5rem;
-        padding: 0.5rem;
-        font-size: 2rem;
+        margin: 1.5rem 0;
+        font-size: 1.4rem;
+        font-weight: 600;
     }
 
-    .navbar .nav a::after {
-        transform-origin: 0 0;
+    /* Hero Section di Tablet/Mobile */
+    .hero {
+        padding: 7rem 5% 3.5rem;
     }
 
-    .navbar .nav a:hover::after {
-        transform: scaleX(0.3)
+    .hero-bg-decor {
+        display: none; /* Sembunyikan floating image agar kartu utama terbaca jelas */
+    }
+
+    .hero-card {
+        padding: 2.5rem 1.8rem;
+    }
+
+    .hero-title {
+        font-size: 2.3rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .hero-video-box {
+        max-width: 17.5rem; /* Ukuran yang pas untuk layar HP kecil */
+        padding: 0.6rem;
+    }
+
+    /* Grid 1 Kolom untuk Card & Footer di Tablet/Mobile */
+    .pricelist-card {
+        padding: 2.5rem 1.2rem 2rem;
+        border-radius: 1.6rem;
+    }
+    .slider-container {
+        max-width: 18rem;
+    }
+    .slider-btn {
+        width: 2.4rem;
+        height: 2.4rem;
+    }
+    .slider-btn svg {
+        width: 1.2rem;
+        height: 1.2rem;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+
+    .btn-back-to-top {
+        bottom: calc(1.5rem + env(safe-area-inset-bottom));
+        right: calc(1.5rem + env(safe-area-inset-right));
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .btn-back-to-top svg {
+        width: 1.4rem;
+        height: 1.4rem;
     }
 }
 
-/* Mobile */
-@media (max-width: 450px) {
-    html {
-        font-size: 55%;
+/* 4. Smartphone Android & iPhone Standar / Kecil (max-width: 480px) */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0.8rem 5%;
+    }
+
+    .navbar .judul {
+        font-size: 1.35rem;
+    }
+
+    .hero-card {
+        padding: 2rem 1.2rem;
+        border-radius: 1.5rem;
+    }
+
+    .hero-title {
+        font-size: 1.95rem;
+    }
+
+    .hero-badge {
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+    }
+
+    .btn-hero {
+        padding: 0.75rem 2rem;
+        font-size: 1rem;
+        width: 100%; /* Tombol lebar penuh di HP agar mudah disentuh */
+    }
+
+    .visit-container {
+        padding: 2rem 1.2rem;
+        border-radius: 1.5rem;
+    }
+
+    .visit-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .img-full {
+        height: 14rem;
+    }
+
+    .img-tall {
+        height: 12rem;
+    }
+
+    .img-short {
+        height: 10rem;
     }
 }
